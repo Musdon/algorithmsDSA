@@ -10,35 +10,58 @@ public class StackImpl {
         System.out.println("The stack is created with size of: " +size);
     }
 
-    //Is empty method
     public boolean isEmpty(){
         if (topOfStack == -1){
             return true;
-        } else {
-            return false;
         }
+        return false;
     }
 
-    //is full method
     public boolean isFull(){
         if (topOfStack == arr.length-1){
-            //System.out.println("The stack is full");
             return true;
-        } else {
-            return false;
+        }
+        return false;
+    }
+
+    public void push(int value){
+        if (isFull()){
+            System.out.println("New values cannot be added as the stack is full");
+        }
+        else {
+            arr[topOfStack+1] = value;
+            topOfStack++;
+            System.out.println(value + " has been successfully added");
         }
     }
 
-    //push
-    public void push(int value){
-        if (isFull()){
-            System.out.println("The stack is full");
-        } else {
-            arr[topOfStack+1] = value;
-            topOfStack++;
-            System.out.println("The value is successfully inserted");
+    public int pop(){
+        if (isEmpty()){
+            System.out.println("There's nothing in the stack");
+            return -1;
+        }
+        else {
+            int topElementInStack = arr[topOfStack-1];
+            topOfStack--;
+            return topElementInStack;
+
         }
     }
+
+    public int peek(){
+        if (isEmpty()){
+            System.out.println("There's nothing in the stack");
+            return -1;
+
+        }
+        return arr[topOfStack];
+    }
+
+    public void delete(){
+        arr = null;
+        System.out.println("The stack has been successfully deleted");
+    }
+
 
     public static void main(String[] args) {
         StackImpl newStack = new StackImpl(4);
@@ -49,35 +72,13 @@ public class StackImpl {
         newStack.push(3);
         newStack.push(4);
         newStack.push(5);
-        //System.out.println(newStack.pop());
+
+        System.out.println(newStack.pop());
         System.out.println(newStack.peek());
-        newStack.deleteStack();
-        newStack.peek();
-    }
+        newStack.delete();
 
-    public int pop(){
-        if (isEmpty()){
-            System.out.println("The stack is empty");
-            return -1;
-        } else {
-            int topStack = arr[topOfStack];
-            topOfStack--;
-            return topStack;
-        }
 
     }
 
-    public int peek(){
-        if (isEmpty()){
-            System.out.println("The stack is empty");
-            return -1;
-        } else {
-            return arr[topOfStack];
-        }
-    }
 
-    public void deleteStack(){
-        arr = null;
-        System.out.println("The stack is successfully deleted");
-    }
 }
