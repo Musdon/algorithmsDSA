@@ -11,6 +11,7 @@ public class BestScore {
         int first = arr[0];
         int second = arr[1];
         return first + " " + second;
+
     }
 
     public static void main(String[] args) {
